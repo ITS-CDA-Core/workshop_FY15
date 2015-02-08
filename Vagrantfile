@@ -14,6 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		chef.cookbooks_path = "chef/site-cookbooks/"
 		chef.run_list = %w[
 			recipe[java]
+			recipe[java::maven]
 		]
 	end
 
