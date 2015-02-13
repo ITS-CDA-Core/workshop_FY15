@@ -7,6 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 	config.vm.network :forwarded_port, guest: 80, host: 20080 # http
 	config.vm.network :forwarded_port, guest: 8080, host: 28080 # http
+	config.vm.network :forwarded_port, guest: 8180, host: 28180 # jenkins
 
 	config.vm.synced_folder "./src", "/var/www/src", :create => true, :owner => 'vagrant', :group => 'vagrant', :mount_options => ['dmode=777', 'fmode=666']
 
