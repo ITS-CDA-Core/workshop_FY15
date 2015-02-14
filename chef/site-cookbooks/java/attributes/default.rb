@@ -9,6 +9,6 @@ default["maven"]["download"]["url"] = default["maven"]["download"]["site"] + "/m
 
 default['spring-boot']['version'] = "1.2.1.RELEASE"
 default['spring-boot']['groupId'] = "org.sample"
-default['spring-boot']['artifactId'] = "SampleProject"
-default['spring-boot']['apps_basedir'] = "/var/www/src/spring-boot-apps"
+default['spring-boot']['artifactId'] = "1st-app"
+default['spring-boot']['apps_basedir'] = "/var/src"
 default['spring-boot']['app_dir'] = "#{default['spring-boot']['apps_basedir']}/#{default['spring-boot']['artifactId']}"
