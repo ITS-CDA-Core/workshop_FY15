@@ -1,3 +1,13 @@
+execute "rpm import jenkins-ci.org.key" do
+	command "rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key"
+	action :run
+	not_if { ::File.exists?("/etc/yum.repos.d/jenkins.repo") }
+end
+
+remote_file "/etc/yum.repos.d/jenkins.repo" do
+	source "http://pkg.jenkins-ci.org/redhat/jenkins.repo"
+	action :create
+end
 
 package "jenkins" do
 	action :install
@@ -10,9 +20,6 @@ ruby_block "edit /etc/sysconfig/jenkins" do
 		_file.search_file_replace_line('^JENKINS_PORT', "JENKINS_PORT=\"" + node["jenkins"]["port"] + "\"\n")
 		_file.search_file_replace_line('^JENKINS_AJP_PORT', "JENKINS_AJP_PORT=\"" + node["jenkins"]["ajp_port"] + "\"\n")
 		_file.write_file
-	#	content _file.send(:editor).lines.join
-	#	_file.search_file_replace_line('^JENKINS_AJP_PORT', "JENKINS_AJP_PORT=\"" + node["jenkins"]["ajp_port"] + "\"\n")
-	#	content _file.send(:editor).lines.join
 	end
 	action :nothing
 end
