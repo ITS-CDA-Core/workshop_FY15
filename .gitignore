@@ -12,3 +12,8 @@
 hs_err_pid*
 
 /.vagrant/
+
+# Eclipse
+.classpath
+.project
+.settings
