@@ -13,7 +13,8 @@ template "pom.xml" do
 	variables({
 		:groupId => node['spring-boot']['groupId'],
 		:artifactId => node['spring-boot']['artifactId'],
-		:versionOfSpringBoot => node['spring-boot']['version']
+		:versionOfSpringBoot => node['spring-boot']['version'],
+		:mailClass => node['spring-boot']['mainClass']
 	})
 end
 

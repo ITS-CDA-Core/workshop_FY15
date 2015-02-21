@@ -9,5 +9,9 @@
 <body>
 	<h1>Root Page</h1>
 	<p>${message}</p>
+	<form method="post" action="/post">
+		<input type="text" name="text1"/>
+		<input type="submit"/>
+	</form>
 </body>
 </html>
