@@ -14,7 +14,9 @@ template "pom.xml" do
 		:groupId => node['spring-boot']['groupId'],
 		:artifactId => node['spring-boot']['artifactId'],
 		:versionOfSpringBoot => node['spring-boot']['version'],
-		:mailClass => node['spring-boot']['mainClass']
+		:mailClass => node['spring-boot']['mainClass'],
+		:versionOfJUnit => node['junit']['version'],
+		:versionOfSpringLoaded => node['spring-loaded']['version']
 	})
 end
 

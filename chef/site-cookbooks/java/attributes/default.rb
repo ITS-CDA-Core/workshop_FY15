@@ -13,3 +13,7 @@ default['spring-boot']['artifactId'] = "1st-app"
 default['spring-boot']['mainClass'] = "#{default['spring-boot']['groupId']}.App"
 default['spring-boot']['apps_basedir'] = "/var/src"
 default['spring-boot']['app_dir'] = "#{default['spring-boot']['apps_basedir']}/#{default['spring-boot']['artifactId']}"
+
+default['junit']['version'] = "3.8.1"
+
+default['spring-loaded']['version'] = "1.2.1.RELEASE"
