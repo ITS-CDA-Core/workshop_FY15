@@ -18,7 +18,7 @@ public class RoomData {
 	private String title;
 	
 	@Column(nullable = false)
-	private Long createBy;
+	private Long createdBy;
 	
 	@Column(nullable = false)
 	private Date createdAt;
@@ -39,12 +39,12 @@ public class RoomData {
 		this.title = title;
 	}
 
-	public Long getCreateBy() {
-		return createBy;
+	public Long getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreateBy(Long createBy) {
-		this.createBy = createBy;
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	public Date getCreatedAt() {
@@ -53,5 +53,14 @@ public class RoomData {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+	
+	@Override
+	public String toString() {
+		return "RoomData [id=" + this.id +
+				", title=" + this.title +
+				", createdBy=" + this.createdBy.toString() +
+				", createdAt=" + this.createdAt.toString() +
+				"]";
 	}
 }
