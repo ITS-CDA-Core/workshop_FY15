@@ -1,4 +1,4 @@
-package org.sample;
+package org.sample.domain;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class RoomData {
+public class ChatRoom {
 	
 	@Id
 	@GeneratedValue
