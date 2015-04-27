@@ -9,6 +9,7 @@
 1. [GitHubクライアントツールのインストール](https://github.com/ITS-CDA-Core/docs/blob/master/setup_GitHubClient.md)
 1. [GitHubクライアントツールでの開発リソースのダウンロード方法](https://github.com/ITS-CDA-Core/docs/blob/master/git_clone_with_GitHubClient.md)
 1. [開発リソース内のVagrantスクリプトの起動方法](https://github.com/ITS-CDA-Core/docs/blob/master/setup_VM_with_Vagrant.md)
+1. [[Winのみ]コマンドライン版ssh・rsync（MinGW）のセットアップ手順](https://github.com/ITS-CDA-Core/docs/blob/master/setup_VM_with_Vagrant.md)
 1. [起動した仮想環境へのログイン方法](https://github.com/ITS-CDA-Core/docs/blob/master/log_in_to_VM_with_Vagrant.md)
 
 ## 開発系手順
