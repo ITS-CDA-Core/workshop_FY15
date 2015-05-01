@@ -7,11 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Root Page</h1>
-	<p>${message}</p>
-	<form method="post" action="/post">
-		<input type="text" name="text1"/>
-		<input type="submit"/>
-	</form>
+	<div>
+		<div>add Chat Room</div>
+		<div>login</div>
+		<div>sign up</div>
+	</div>
+	<div>
+		<h1>Chat Room List</h1>
+		<p>${message}</p>
+		<form method="post" action="/post">
+			<input type="text" name="text1"/>
+			<input type="submit"/>
+		</form>
+	</div>
 </body>
 </html>
