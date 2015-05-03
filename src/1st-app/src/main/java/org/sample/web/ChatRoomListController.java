@@ -22,20 +22,8 @@ public class ChatRoomListController
 	String index(Model model) {
 		List<ChatRoom> chatRoomList = service.findAll();
 		
-		String message = "";
-		for (ChatRoom chatRoom : chatRoomList) {
-			message += chatRoom.getTitle();
-		}
-		
-		model.addAttribute("message", message);
+		model.addAttribute("chatRoomList", chatRoomList);
 		return "ChatRoomList";
 	}
 
-	@RequestMapping(value="/post", method=RequestMethod.POST)
-	public ModelAndView postForm(
-		@RequestParam("text1") String text1) {
-		ModelAndView mv = new ModelAndView("ChatRoomList");
-		mv.addObject("message", "you typed '" + text1 + "'");
-		return mv;
-	}
 }

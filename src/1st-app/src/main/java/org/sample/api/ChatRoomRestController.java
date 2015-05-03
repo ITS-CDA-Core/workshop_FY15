@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /* For Example
-curl http://localhost:8080/api/chat_rooms -v -X POST -H 'Content-Type:application/json' -d '{"title":"Chat Room 1", "createdBy":"0", "createdAt":"2015-01-01T09:00:00.000Z"}'
-curl http://localhost:8080/api/chat_rooms -v -X POST -H 'Content-Type:application/json' -d '{"title":"Chat Room 2", "createdBy":"1", "createdAt":"2015-01-02T23:59:59.999Z"}'
+curl http://localhost:8080/api/chat_rooms -v -X POST -H 'Content-Type:application/json' -d '{"title":"Chat Room 1", "createdBy":"imaizm", "createdAt":"2015-01-01T09:00+09"}'
+curl http://localhost:8080/api/chat_rooms -v -X POST -H 'Content-Type:application/json' -d '{"title":"Chat Room 2", "createdBy":"Kohara", "createdAt":"2015-01-02T23:59+09"}'
 curl http://localhost:8080/api/chat_rooms -v -X GET
 curl http://localhost:8080/api/chat_rooms/1 -v -X DELETE
 curl http://localhost:8080/api/chat_rooms -v -X GET

@@ -18,7 +18,7 @@ public class ChatRoom {
 	private String title;
 	
 	@Column(nullable = false)
-	private Long createdBy;
+	private String createdBy;
 	
 	@Column(nullable = false)
 	private Date createdAt;
@@ -39,11 +39,11 @@ public class ChatRoom {
 		this.title = title;
 	}
 
-	public Long getCreatedBy() {
+	public String getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(Long createdBy) {
+	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
