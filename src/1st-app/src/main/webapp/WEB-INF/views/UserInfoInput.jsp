@@ -40,6 +40,6 @@
 			</form:form>
 		</sec:authorize>
 	</div>
-<c:import url="common/CommonFooter.jsp"/>
+	<c:import url="common/CommonFooter.jsp"/>
 </body>
 </html>
