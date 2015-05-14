@@ -15,7 +15,7 @@
 </head>
 <body>
 	<c:import url="common/CommonHeader.jsp"/>
-	<div>
+	<div class="container">
 		<h1>Chat Room List</h1>
 		<div class="ui comments">
 			<c:forEach var="chatRoom" items="${chatRoomList}" varStatus="status">
