@@ -7,7 +7,6 @@
 <html>
 <head>
 	<c:import url="common/CommonTopOfHeadTag.jsp"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>ユーザ情報登録</title>
 	<c:import url="common/CommonImport.jsp"/>
 </head>
@@ -24,8 +23,13 @@
 					<div class="ui horizontal label">User Name</div>
 					${userName}
 				</div>
+				<div class="ui segment">
+					<div class="ui horizontal label">Avatar</div>
+					<img src="/static/image/Avatar/Large/${avatarId}.jpg"/>
+				</div>
 				<input type="hidden" name="userName" value="${userName}"/>
 				<input type="hidden" name="password" value="${password}"/>
+				<input type="hidden" name="avatarId" value="${avatarId}"/>
 				<input type="submit" class="ui submit button" value="Submit"/>
 			</form:form>
 		</sec:authorize>

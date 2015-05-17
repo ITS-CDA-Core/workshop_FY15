@@ -7,7 +7,6 @@
 <html>
 <head>
 	<c:import url="common/CommonTopOfHeadTag.jsp"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>CDA BBS</title>
 	<c:import url="common/CommonImport.jsp"/>
 <style type="text/css">

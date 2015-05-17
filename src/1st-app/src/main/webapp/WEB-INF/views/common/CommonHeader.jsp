@@ -18,10 +18,17 @@
 			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
 				<sec:authentication property="principal.user" var="user" />
-				<div>ログイン済：${user.userName}</div>
-				<div>add Chat Room</div>
-				<div>
-					<form:form action="/logout" method="post">
+				<div class="item">ITS-CDA BBS</div>
+				<div class="menu right">
+					<div class="item">
+						<div class="ui list">
+							<div class="item">
+							<img class="ui mini rounded image" src="/static/image/Avatar/Small/${user.avatarId}.jpg" />
+							<div class="content">${user.userName}</div>
+							</div>
+						</div>
+					</div>
+					<form:form action="/logout" method="post" class="item">
 						<input type="submit" value="Logout" class="ui button">
 					</form:form>
 				</div>

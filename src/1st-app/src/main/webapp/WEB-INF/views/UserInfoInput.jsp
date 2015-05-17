@@ -7,13 +7,13 @@
 <html>
 <head>
 	<c:import url="common/CommonTopOfHeadTag.jsp"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>ユーザ情報登録</title>
 	<c:import url="common/CommonImport.jsp"/>
+	<link type="text/css" rel="stylesheet" href="/static/css/UserInfoInput.css" />
 </head>
 <body>
 	<c:import url="common/CommonHeader.jsp"/>
-	<div>
+	<div class="container">
 		<h1>ユーザ情報登録</h1>
 		<sec:authorize access="isAuthenticated()">
 			<div>すでにログイン済みです。</div>
@@ -36,6 +36,13 @@
 					</div>
 				</div>
 				<div class="ui hidden divider"></div>
+				<div class="AvatarSelector">
+					<div>Avatar</div>
+					<c:forEach var="avaterId" items="${avaterIdList}">
+						<input type="radio" name="avatarId" id="${avaterId}" value="${avaterId}" />
+						<label class="AvatarImage" for="${avaterId}"><img src="/static/image/Avatar/Large/${avaterId}.jpg" /></label>
+					</c:forEach>
+				</div>
 				<input type="submit" class="ui submit button" value="Submit"/>
 			</form:form>
 		</sec:authorize>

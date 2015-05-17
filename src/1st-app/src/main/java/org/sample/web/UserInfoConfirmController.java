@@ -19,11 +19,13 @@ public class UserInfoConfirmController {
 	@RequestMapping(value="/UserInfoConfirm", method=RequestMethod.POST)
 	String form(
 		@RequestParam("userName") String userName,
-		@RequestParam("password") String password) {
+		@RequestParam("password") String password,
+		@RequestParam("avatarId") String avatarId) {
 		
 		User user = new User();
 		user.setUserName(userName);
 		user.setPassword(password);
+		user.setAvatarId(avatarId);
 		user.setCreatedAt(new Date());
 		service.save(user);
 		

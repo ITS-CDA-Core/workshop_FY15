@@ -16,7 +16,7 @@ public class User {
 	private String password;
 	
 	@Column(nullable = true)
-	private String icon;
+	private String avatarId;
 
 	@Column(nullable = false)
 	private Date createdAt;
@@ -37,12 +37,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getIcon() {
-		return icon;
+	public String getAvatarId() {
+		return avatarId;
 	}
 
-	public void setIcon(String icon) {
-		this.icon = icon;
+	public void setAvatarId(String avatarId) {
+		this.avatarId = avatarId;
 	}
 
 	public Date getCreatedAt() {
