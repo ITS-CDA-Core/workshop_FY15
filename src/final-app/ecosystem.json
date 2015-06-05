@@ -1,0 +1,8 @@
+{
+	apps : [
+		{
+			name      : "final-app",
+			script    : "bin/www"
+		}
+	]
+}

@@ -6,15 +6,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box"
 	config.omnibus.chef_version = :latest
 
-	config.vm.network :forwarded_port, guest: 80, host: 20080 # http
-	config.vm.network :forwarded_port, guest: 8080, host: 28080 # http
-	config.vm.network :forwarded_port, guest: 8180, host: 28180 # jenkins
+	config.vm.network :forwarded_port, guest: 3000, host: 33000 # node
 
-	config.vm.synced_folder "../src", "/var/src", :create => true, :owner => 'vagrant', :group => 'vagrant', :mount_options => ['dmode=777', 'fmode=666']
+	config.vm.synced_folder "../../src/final-app", "/var/src", :create => true, :owner => 'vagrant', :group => 'vagrant', :mount_options => ['dmode=777', 'fmode=666']
 
 	config.vm.provision "chef_solo" do |chef|
-		chef.cookbooks_path = "../chef/site-cookbooks/"
+		chef.cookbooks_path = "../../chef/site-cookbooks/"
 		chef.run_list = %w[
+			recipe[linux::localedef_for_UTF-8]
+			recipe[linux::sudoers_for_path]
+			recipe[mongodb]
+			recipe[redis]
+			recipe[node.js]
+			recipe[node.js::express]
+			recipe[node.js::pm2]
+			recipe[node.js::launch_final-app]
 		]
 	end
 
