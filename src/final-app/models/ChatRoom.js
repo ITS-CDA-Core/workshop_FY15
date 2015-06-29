@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/its_chat');
 
 var schema = new mongoose.Schema({
 	title: String,
-	createdByUserId: Schema.Types.ObjectId,
+	createdByUserId: mongoose.Schema.Types.ObjectId,
 	createdByUserName: String,
 	createdAt: Date
 });

@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/its_chat');
 
 var schema = new mongoose.Schema({
 	chatRoomId: Schema.Types.ObjectId,
