@@ -198,7 +198,6 @@
 			</form>
 			<div>
 				<pre>user = {{user|json}}</pre>
-				<pre>userForm.userName.$error = {{userForm.userName.$error|json}}</pre>
 				<pre>userForm.$error = {{userForm.$error|json}}</pre>
 			</div>
 		</div>
@@ -207,8 +206,9 @@
 			<p>ユーザ一覧</p>
 			ユーザ数 : {{users.length}}
 			<ul>
-				<li ng-repeat="user in users">{{user.userName}} : {{user.password}} : {{user.avatarId}}</li>
+				<li ng-repeat="user in users">{{user._id}} : {{user.userName}} : {{user.password}} : {{user.avatarId}}</li>
 			</ul>
+			<pre>user = {{users|json}}</pre>
 		</div>
 	</body>
 </html>
