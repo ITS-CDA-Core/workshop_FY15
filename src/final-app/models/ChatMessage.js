@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-	chatRoomId: Schema.Types.ObjectId,
+	chatRoomId: mongoose.Schema.Types.ObjectId,
 	message: String,
-	createdByUserId: Schema.Types.ObjectId,
+	createdByUserId: mongoose.Schema.Types.ObjectId,
 	createdByUserName: String,
 	createdAt: Date
 });

@@ -13,6 +13,12 @@
 				$http.get('/api/users')
 					.success(function (data) {
 					$scope.users = data;
+
+					var tempHash = {};
+					angular.forEach(data, function (user, i) {
+						tempHash[user._id] = user;
+					});
+					$scope.usersIdHash = tempHash;
 				})
 
 				$scope.chatRoom = {};
@@ -31,7 +37,10 @@
 						return;
 					}
 
-					$http.post('/api/users', $scope.user)
+					var selectedUser = $scope.usersIdHash[$scope.chatRoom.createdByUserId];
+					$scope.chatRoom.createdByUserName = selectedUser.userName;
+
+					$http.post('/api/chat_rooms', $scope.chatRoom)
 						.success(function(data, status, headers, config){
 							alert("succsess");
 						})
@@ -57,7 +66,7 @@
 				<div>
 					<div>
 						<label>ユーザ：</label>
-						<span ng-messages="chatRoomForm.createdByUserId.$error" ng-if="chatRoomForm.avatarId.$dirty || chatRoomForm.$submitted">
+						<span ng-messages="chatRoomForm.createdByUserId.$error" ng-if="chatRoomForm.createdByUserId.$dirty || chatRoomForm.$submitted">
 							<span ng-message="required">必須です</span>
 						</span>
 					</div>
@@ -85,11 +94,11 @@
 			</div>
 		</div>
 
-		<div ng-controller="UserListController">
+		<div ng-controller="ChatRoomListController">
 			<p>Chat Room 一覧</p>
 			Room数 : {{chatRooms.length}}
 			<ul>
-				<li ng-repeat="chatRoom in chatRooms">{{chatRoom.id}} : {{chatRoom.title}} : {{chatRoom.createdByUserId}} : {{chatRoom.createdByUserName}} : {{chatRoom.createdAt}}</li>
+				<li ng-repeat="chatRoom in chatRooms">{{chatRoom._id}} : {{chatRoom.title}} : {{chatRoom.createdByUserId}} : {{chatRoom.createdByUserName}} : {{chatRoom.createdAt}}</li>
 			</ul>
 		</div>
 	</body>

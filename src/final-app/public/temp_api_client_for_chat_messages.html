@@ -1,45 +1,51 @@
 <!doctype html>
 <html ng-app="app">
 	<head>
-		<title>User API Temp Client</title>
+		<title>Chat Message API Temp Client</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-messages.min.js"></script>
 		<script type="text/javascript">
 		(function () {
 			var app = angular.module('app', ['ngMessages']);
 
-			app.controller('UserFormController', function($scope, $http) {
+			app.controller('ChatMessageFormController', function($scope, $http) {
 				// model
-				$scope.user = {};
+				$http.get('/api/chat_rooms')
+					.success(function (data) {
+					$scope.chatRooms = data;
+				})
+
+				$http.get('/api/users')
+					.success(function (data) {
+					$scope.users = data;
+
+					var tempHash = {};
+					angular.forEach(data, function (user, i) {
+						tempHash[user._id] = user;
+					});
+					$scope.usersIdHash = tempHash;
+				})
+
+				$scope.chatMessage = {};
 
 				// validator (sync)
 				$scope.validators = {
-					password: {
-						joe: function (modelValue, viewValue) {
-							var value = modelValue || viewValue;
-							var user = $scope.user || {};
-
-							return value != user.userName;
-						}
-					}
 				};
 
 				// validator (async)
 				$scope.asyncValidators = {
-
 				};
 
-				$scope.$watch('user.userName', function () {
-					$scope.userForm.password.$validate();
-				});
-
 				$scope.submit = function () {
-					if ($scope.userForm.$invalid) {
-						$scope.userForm.$setDirty();
+					if ($scope.chatMessageForm.$invalid) {
+						$scope.chatMessageForm.$setDirty();
 						return;
 					}
 
-					$http.post('/api/users', $scope.user)
+					var selectedUser = $scope.usersIdHash[$scope.chatMessage.createdByUserId];
+					$scope.chatMessage.createdByUserName = selectedUser.userName;
+
+					$http.post('/api/chat_messages', $scope.chatMessage)
 						.success(function(data, status, headers, config){
 							alert("succsess");
 						})
@@ -49,25 +55,10 @@
 				};
 			});
 
-			app.directive('appValidators', function() {
-				return {
-					require: 'ngModel',
-					scope: {
-						appValidators: '='
-					},
-					link: function (scope, elem, attrs, ctrl) {
-						var validators = scope.appValidators || {};
-						angular.forEach(validators, function (val, key){
-							ctrl.$validators[key] = val;
-						});
-					}
-				};
-			});
-
-			app.controller('UserListController', function($scope, $http) {
-				$http.get('/api/users')
+			app.controller('ChatMessageListController', function($scope, $http) {
+				$http.get('/api/chat_messages')
 					.success(function(data) {
-					$scope.users = data;
+					$scope.chatMessages = data;
 				});
 			});
 		})();
@@ -75,139 +66,56 @@
 	</head>
 
 	<body>
-		<div ng-controller="UserFormController">
-			<form name="userForm" novalidate ng-submit="submit()">
-				<div ng-class="{'has-error' : userForm.userName.$dirty && userForm.userName.$invalid}">
+		<div ng-controller="ChatMessageFormController">
+			<form name="chatMessageForm" novalidate ng-submit="submit()">
+				<div>
 					<div>
-						<label>ユーザ名：</label>
-						<span ng-messages="userForm.userName.$error" ng-if="userForm.userName.$dirty || userForm.$submitted">
-							<span ng-message="required">必須です</span>
-							<span ng-message="pattern">不正な値です</span>
-							<span ng-message="minlength">4文字以上必要です</span>
-						</span>
-					</div>
-					<input type="text" name="userName" ng-model="user.userName"
-					       required minlength="4" ng-pattern="/^[a-zA-Z0-9]+$/" />
-				</div>
-				<div ng-class="{'has-error' : userForm.password.$dirty && userForm.password.$invalid}">
-					<div>
-						<label>パスワード：</label>
-						<span ng-messages="userForm.password.$error" ng-if="userForm.password.$dirty || userForm.$submitted">
-							<span ng-message="required">必須です</span>
-							<span ng-message="pattern">不正な値です</span>
-							<span ng-message="minlength">4文字以上必要です</span>
-							<span ng-message="joe">ユーザ名とは別にしてください</span>
-						</span>
-					</div>
-					<input type="password" name="password" ng-model="user.password"
-					       required minlength="4" ng-pattern="/^[a-zA-Z0-9]+$/" app-validators="validators.password" />
-				</div>
-				<div ng-class="{'has-error' : userForm.avatarId.$dirty && userForm.password.$invalid}">
-					<div>
-						<label>アバター：</label>
-						<span ng-messages="userForm.avatarId.$error" ng-if="userForm.avatarId.$dirty || userForm.$submitted">
+						<label>話題：</label>
+						<span ng-messages="chatMessageForm.chatRoomId.$error" ng-if="chatMessageForm.chatRoomId.$dirty || chatMessageForm.$submitted">
 							<span ng-message="required">必須です</span>
 						</span>
 					</div>
-					<select ng-model="user.avatarId"
+					<select ng-model="chatMessage.chatRoomId"
 						required>
-						<option value="01">01</option>
-						<option value="02">02</option>
-						<option value="03">03</option>
-						<option value="04">04</option>
-						<option value="05">05</option>
-						<option value="06">06</option>
-						<option value="07">07</option>
-						<option value="08">08</option>
-						<option value="09">09</option>
-						<option value="10">10</option>
-						<option value="11">11</option>
-						<option value="12">12</option>
-						<option value="13">13</option>
-						<option value="14">14</option>
-						<option value="15">15</option>
-						<option value="16">16</option>
-						<option value="17">17</option>
-						<option value="18">18</option>
-						<option value="19">19</option>
-						<option value="20">20</option>
-						<option value="21">21</option>
-						<option value="22">22</option>
-						<option value="23">23</option>
-						<option value="24">24</option>
-						<option value="25">25</option>
-						<option value="26">26</option>
-						<option value="27">27</option>
-						<option value="28">28</option>
-						<option value="29">29</option>
-						<option value="30">30</option>
-						<option value="31">31</option>
-						<option value="32">32</option>
-						<option value="33">33</option>
-						<option value="34">34</option>
-						<option value="35">35</option>
-						<option value="36">36</option>
-						<option value="37">37</option>
-						<option value="38">38</option>
-						<option value="39">39</option>
-						<option value="40">40</option>
-						<option value="41">41</option>
-						<option value="42">42</option>
-						<option value="43">43</option>
-						<option value="44">44</option>
-						<option value="45">45</option>
-						<option value="46">46</option>
-						<option value="47">47</option>
-						<option value="48">48</option>
-						<option value="49">49</option>
-						<option value="50">50</option>
-						<option value="51">51</option>
-						<option value="52">52</option>
-						<option value="53">53</option>
-						<option value="54">54</option>
-						<option value="55">55</option>
-						<option value="56">56</option>
-						<option value="57">57</option>
-						<option value="58">58</option>
-						<option value="59">59</option>
-						<option value="60">60</option>
-						<option value="61">61</option>
-						<option value="62">62</option>
-						<option value="63">63</option>
-						<option value="64">64</option>
-						<option value="65">65</option>
-						<option value="66">66</option>
-						<option value="67">67</option>
-						<option value="68">68</option>
-						<option value="69">69</option>
-						<option value="70">70</option>
-						<option value="71">71</option>
-						<option value="72">72</option>
-						<option value="73">73</option>
-						<option value="74">74</option>
-						<option value="75">75</option>
-						<option value="76">76</option>
-						<option value="77">77</option>
-						<option value="78">78</option>
-						<option value="79">79</option>
-						<option value="80">80</option>
-						<option value="81">81</option>
+						<option ng-repeat="chatRoom in chatRooms" value="{{chatRoom._id}}">{{chatRoom.title}}</option>
 					</select>
 				</div>
-				<button ng-disabled="userForm.$dirty && userForm.$invalid">送信</button>
+				<div>
+					<div>
+						<label>ユーザ：</label>
+						<span ng-messages="chatMessageForm.createdByUserId.$error" ng-if="chatMessageForm.createdByUserId.$dirty || chatMessageForm.$submitted">
+							<span ng-message="required">必須です</span>
+						</span>
+					</div>
+					<select ng-model="chatMessage.createdByUserId"
+						required>
+						<option ng-repeat="user in users" value="{{user._id}}">{{user.userName}}</option>
+					</select>
+				</div>
+				<div>
+					<div>
+						<label>メッセージ：</label>
+						<span ng-messages="chatMessageForm.message.$error" ng-if="chatMessageForm.message.$dirty || chatMessageForm.$submitted">
+							<span ng-message="required">必須です</span>
+							<span ng-message="minlength">4文字以上必要です</span>
+						</span>
+					</div>
+					<input type="text" name="message" ng-model="chatMessage.message"
+					       required minlength="4" />
+				</div>
+				<button ng-disabled="chatMessageForm.$dirty && chatMessageForm.$invalid">送信</button>
 			</form>
 			<div>
-				<pre>user = {{user|json}}</pre>
-				<pre>userForm.userName.$error = {{userForm.userName.$error|json}}</pre>
-				<pre>userForm.$error = {{userForm.$error|json}}</pre>
+				<pre>chatMessage = {{chatMessage|json}}</pre>
+				<pre>chatMessageForm.$error = {{chatMessageForm.$error|json}}</pre>
 			</div>
 		</div>
 
-		<div ng-controller="UserListController">
-			<p>ユーザ一覧</p>
-			ユーザ数 : {{users.length}}
+		<div ng-controller="ChatMessageListController">
+			<p>Chat Message 一覧</p>
+			Room数 : {{chatMessages.length}}
 			<ul>
-				<li ng-repeat="user in users">{{user.userName}} : {{user.password}} : {{user.avatarId}}</li>
+				<li ng-repeat="chatMessage in chatMessages">{{chatMessage._id}} : {{chatMessage.chatRoomId}} : {{chatMessage.message}} : {{chatMessage.createdByUserId}} : {{chatMessage.createdByUserName}} : {{chatMessage.createdAt}}</li>
 			</ul>
 		</div>
 	</body>

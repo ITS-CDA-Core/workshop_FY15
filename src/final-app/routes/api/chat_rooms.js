@@ -27,7 +27,10 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	ChatRoom.create(req.body, function (err, result) {
+	var chatRoom = req.body;
+	chatRoom.createdAt = new Date();
+
+	ChatRoom.create(chatRoom, function (err, result) {
 		if (err) return next(err);
 
 		res.json(result);
