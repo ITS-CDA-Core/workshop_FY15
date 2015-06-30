@@ -3,7 +3,8 @@ var router = express.Router();
 var User = require('../../models/User');
 
 /* For Example
-curl http://localhost:3000/api/users -v -X POST -H 'Content-Type:application/json' -d '{"userName":"imaizm", "password":"password", "avatarId":"01", "createdAt":"2015-01-01T09:00+09"}'
+curl http://localhost:3000/api/users -v -X POST -H 'Content-Type:application/json' -d '{"userName":"imaizm", "password":"password", "avatarId":"01"}'
+curl http://localhost:3000/api/users -v -X POST -H 'Content-Type:application/json' -d '{"userName":"kohara", "password":"password", "avatarId":"02"}'
 curl http://localhost:3000/api/users -v -X GET
 curl http://localhost:3000/api/users/imaizm -v -X DELETE
 curl http://localhost:3000/api/users -v -X GET
@@ -32,7 +33,10 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	User.create(req.body, function (err, result) {
+	var user = req.body;
+	user.createdAt = new Date();
+
+	User.create(user, function (err, result) {
 		if (err) return next(err);
 
 		res.json(result);
