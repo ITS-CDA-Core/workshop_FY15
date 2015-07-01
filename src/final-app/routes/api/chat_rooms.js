@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var ChatRoom = require('../../models/ChatRoom');
+var ChatMessage = require('../../models/ChatMessage');
 
 /* For Example
 curl http://localhost:3000/api/chat_rooms -v -X POST -H 'Content-Type:application/json' -d '{"title":"Chat Room 1", "createdBy":"imaizm", "createdAt":"2015-01-01T09:00+09"}'
@@ -19,7 +20,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-	ChatRoom.findById(req.params.id, function (err, post) {
+	ChatRoom.findById(req.params.id, function (err, result) {
+		if (err) return next(err);
+
+		res.json(result);
+	});
+});
+
+router.get('/:id/chat_messages', function(req, res, next) {
+	var query = {chatRoomId: req.params.id};
+	var options = {sort: {createdAt: 1}};
+	ChatMessage.find(query, {}, options, function (err, result) {
 		if (err) return next(err);
 
 		res.json(result);
@@ -38,7 +49,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-	ChatRoom.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+	ChatRoom.findByIdAndUpdate(req.params.id, req.body, function (err, result) {
 		if (err) return next(err);
 
 		res.json(result);
@@ -46,7 +57,7 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-	ChatRoom.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+	ChatRoom.findByIdAndRemove(req.params.id, req.body, function (err, result) {
 		if (err) return next(err);
 
 		res.json(result);

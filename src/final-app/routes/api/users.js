@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-	User.findById(req.params.id, function (err, post) {
+	User.findById(req.params.id, function (err, result) {
 		if (err) return next(err);
 
 		res.json(result);
@@ -44,7 +44,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-	User.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+	User.findByIdAndUpdate(req.params.id, req.body, function (err, result) {
 		if (err) return next(err);
 
 		res.json(result);
@@ -52,7 +52,7 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-	User.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+	User.findByIdAndRemove(req.params.id, req.body, function (err, result) {
 		if (err) return next(err);
 
 		res.json(result);
