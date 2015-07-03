@@ -5,6 +5,7 @@
 	<title>CDA Chat</title>
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.2/semantic.css" />
 	<link type="text/css" rel="stylesheet" href="/stylesheets/common.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/signUpForm.css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.2/semantic.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
@@ -13,8 +14,7 @@
 	<script type="text/javascript" src="/javascripts/app.js"></script>
 	<script type="text/javascript" src="/javascripts/controllers/chatRoomListController.js"></script>
 	<script type="text/javascript" src="/javascripts/controllers/chatMessageListController.js"></script>
-<style type="text/css">
-</style>
+	<script type="text/javascript" src="/javascripts/controllers/signUpFormController.js"></script>
 </head>
 <body>
 	<div class="ui fixed menu">
@@ -23,9 +23,9 @@
 			<div class="menu right">
 				<div class="item">未ログイン</div>
 				<div class="ui buttons">
-					<div class="ui button"><a ng-href="#/SignUp">Sign up</a></div>
+					<div class="ui button"><a ng-href="#/SignUpForm">Sign up</a></div>
 					<div class="or"></div>
-					<div class="ui button"><a ng-href="#/Login">Login</a></div>
+					<div class="ui button"><a ng-href="#/LoginForm">Login</a></div>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,60 @@
+<div class="container" ng-controller="SignUpFormController">
+	<h1>Sign Up</h1>
+	<form name="userForm" novalidate ng-submit="submit()">
+		<div>
+			<div>
+				<div class="ui pointing below label">ユーザ名</div>
+				<span ng-messages="userForm.userName.$error" ng-if="userForm.userName.$dirty || userForm.$submitted">
+					<span ng-message="required">必須です</span>
+					<span ng-message="pattern">不正な値です</span>
+					<span ng-message="minlength">4文字以上必要です</span>
+				</span>
+			</div>
+			<div class="ui fluid corner labeled input" ng-class="{'error' : userForm.userName.$dirty && userForm.userName.$invalid}">
+				<input type="text" name="userName" ng-model="user.userName"
+				       required minlength="4" ng-pattern="/^[a-zA-Z0-9]+$/" />
+				<div class="ui corner label">
+					<i class="asterisk icon"></i>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div>
+			<div>
+				<div class="ui pointing below label">パスワード</div>
+				<span ng-messages="userForm.password.$error" ng-if="userForm.password.$dirty || userForm.$submitted">
+					<span ng-message="required">必須です</span>
+					<span ng-message="pattern">不正な値です</span>
+					<span ng-message="minlength">4文字以上必要です</span>
+					<span ng-message="joe">ユーザ名とは別にしてください</span>
+				</span>
+			</div>
+			<div class="ui fluid corner labeled input" ng-class="{'error' : userForm.password.$dirty && userForm.password.$invalid}">
+				<input type="password" name="password" ng-model="user.password"
+				       required minlength="4" ng-pattern="/^[a-zA-Z0-9]+$/" app-validators="validators.password" />
+				<div class="ui corner label">
+					<i class="asterisk icon"></i>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div ng-class="{'has-error' : userForm.avatarId.$dirty && userForm.password.$invalid}">
+			<div>
+				<div class="ui pointing below label">アバター</div>
+				<span ng-messages="userForm.avatarId.$error" ng-if="userForm.avatarId.$dirty || userForm.$submitted">
+					<span ng-message="required">必須です</span>
+				</span>
+			</div>
+			<div class="AvatarSelector">
+				<span ng-repeat="avatar in avaters">
+					<input type="radio" name="avatarId" ng-model="user.avaterId" ng-value="avater" />
+					<label class="AvatarImage" for="{{avatar}}"><img src="/images/Avatar/Large/{{avatar}}.jpg" /></label>
+				</span>
+			</div>
+		</div>
+		<br/>
+		<button class="ui fluid primary button"
+		        ng-class="{'disabled' : userForm.$dirty && userForm.$invalid}"
+		        ng-disabled="userForm.$dirty && userForm.$invalid">登録</button>
+	</form>
+</div>
