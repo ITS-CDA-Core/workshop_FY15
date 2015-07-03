@@ -5,6 +5,7 @@ var schema = new mongoose.Schema({
 	message: String,
 	createdByUserId: mongoose.Schema.Types.ObjectId,
 	createdByUserName: String,
+	createdByUserAvatarId: String,
 	createdAt: Date
 });
 

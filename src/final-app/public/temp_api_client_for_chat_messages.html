@@ -44,6 +44,7 @@
 
 					var selectedUser = $scope.usersIdHash[$scope.chatMessage.createdByUserId];
 					$scope.chatMessage.createdByUserName = selectedUser.userName;
+					$scope.chatRoom.createdByUserAvatarId = selectedUser.avatarId;
 
 					$http.post('/api/chat_messages', $scope.chatMessage)
 						.success(function(data, status, headers, config){

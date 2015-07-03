@@ -39,6 +39,7 @@
 
 					var selectedUser = $scope.usersIdHash[$scope.chatRoom.createdByUserId];
 					$scope.chatRoom.createdByUserName = selectedUser.userName;
+					$scope.chatRoom.createdByUserAvatarId = selectedUser.avatarId;
 
 					$http.post('/api/chat_rooms', $scope.chatRoom)
 						.success(function(data, status, headers, config){
@@ -55,6 +56,13 @@
 					.success(function(data) {
 					$scope.chatRooms = data;
 				});
+
+				$scope.delete = function(chatRoomId) {
+					$http.delete('/api/chat_rooms/' + chatRoomId)
+						.success(function(data) {
+						alert("deleted");
+					});
+				}
 			});
 		})();
 		</script>
@@ -98,7 +106,7 @@
 			<p>Chat Room 一覧</p>
 			Room数 : {{chatRooms.length}}
 			<ul>
-				<li ng-repeat="chatRoom in chatRooms">{{chatRoom._id}} : {{chatRoom.title}} : {{chatRoom.createdByUserId}} : {{chatRoom.createdByUserName}} : {{chatRoom.createdAt}}</li>
+				<li ng-repeat="chatRoom in chatRooms"><pre>{{chatRoom|json}}</pre><button ng-click="delete(chatRoom._id)">削除</button></li>
 			</ul>
 		</div>
 	</body>
