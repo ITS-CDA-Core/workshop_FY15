@@ -8,8 +8,30 @@
 			<div class="content">
 				<div class="text">{{chatMessage.message}}</div>
 				<div class="author">{{chatMessage.createdByUserName}}</div>
-				<div class="metadata">{{chatMessage.createdAt}}</div>
+				<div class="metadata">{{chatMessage.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</div>
 			</div>
 		</div>
 	</div>
+	<form name="chatMessageForm" novalidate ng-submit="submit()">
+		<div>
+			<div>
+				<div class="ui pointing below label">メッセージ投稿</div>
+				<span ng-messages="chatMessageForm.userName.$error" ng-if="chatMessageForm.userName.$dirty || chatMessageForm.$submitted">
+					<span ng-message="required">必須です</span>
+					<span ng-message="manlength">2,000文字以内でお願いします</span>
+				</span>
+			</div>
+			<div class="ui form" ng-class="{'error' : chatMessageForm.userName.$dirty && chatMessageForm.userName.$invalid}">
+				<textarea name="message" ng-model="chatMessage.message"
+				       required manlength="2000" ></textarea>
+				<div class="ui corner label">
+					<i class="asterisk icon"></i>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<button class="ui fluid primary button"
+		        ng-class="{'disabled' : chatMessageForm.$dirty && chatMessageForm.$invalid}"
+		        ng-disabled="chatMessageForm.$dirty && chatMessageForm.$invalid">登録</button>
+	</form>
 </div>
