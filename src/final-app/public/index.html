@@ -9,7 +9,10 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.2/semantic.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-messages.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
 	<script type="text/javascript" src="/javascripts/app.js"></script>
+	<script type="text/javascript" src="/javascripts/controllers/chatRoomListController.js"></script>
+	<script type="text/javascript" src="/javascripts/controllers/chatMessageListController.js"></script>
 <style type="text/css">
 </style>
 </head>
@@ -20,28 +23,17 @@
 			<div class="menu right">
 				<div class="item">未ログイン</div>
 				<div class="ui buttons">
-					<div class="ui button"><a href="#">Sign up</a></div>
+					<div class="ui button"><a ng-href="#/SignUp">Sign up</a></div>
 					<div class="or"></div>
-					<div class="ui button"><a href="#">Login</a></div>
+					<div class="ui button"><a ng-href="#/Login">Login</a></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="container" ng-controller="ChatRoomListController">
-		<h1>Chat Room List</h1>
-		<div class="ui comments" ng-repeat="chatRoom in chatRooms">
-			<div class="comment">
-				<a class="avatar">
-					<img src="/images/Avatar/Small/{{chatRoom.createdByUserAvatarId}}.jpg"/>
-				</a>
-				<div class="content">
-					<div class="text">{{chatRoom.title}}</div>
-					<div class="author">{{chatRoom.createdByUserName}}</div>
-					<div class="metadata">{{chatRoom.createdAt}}</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<br/>
+	<br/>
+	<br/>
+	<div ng-view></div>
 	<br/>
 	<br/>
 	<br/>

@@ -1,10 +1,21 @@
-(function () {
-	var app = angular.module('app', ['ngMessages']);
+'use strict';
 
-	app.controller('ChatRoomListController', function($scope, $http) {
-		$http.get('/api/chat_rooms')
-			.success(function(data) {
-			$scope.chatRooms = data;
-		});
+(function () {
+	var app = angular.module('app', ['ngRoute', 'ngMessages']);
+
+	app.config(function ($routeProvider) {
+		$routeProvider
+			.when('/', {
+				templateUrl: 'views/chatRoomList.html',
+				controller: 'ChatRoomListController'
+			})
+			.when('/ChatMessageList/:id', {
+				templateUrl: 'views/chatMessageList.html',
+				controller: 'ChatMessageListController'
+			})
+			.otherwise({
+				redirectTo: '/'
+			});
 	});
+
 })();

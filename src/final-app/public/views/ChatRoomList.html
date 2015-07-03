@@ -1,0 +1,15 @@
+<div class="container" ng-controller="ChatRoomListController">
+	<h1>Chat Room List</h1>
+	<div class="ui comments" ng-repeat="chatRoom in chatRooms">
+		<div class="comment">
+			<a class="avatar">
+				<img src="/images/Avatar/Small/{{chatRoom.createdByUserAvatarId}}.jpg"/>
+			</a>
+			<div class="content">
+				<div class="text"><a ng-href="#/ChatMessageList/{{chatRoom._id}}">{{chatRoom.title}}</div>
+				<div class="author">{{chatRoom.createdByUserName}}</div>
+				<div class="metadata">{{chatRoom.createdAt}}</div>
+			</div>
+		</div>
+	</div>
+</div>
