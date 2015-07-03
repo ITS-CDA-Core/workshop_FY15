@@ -6,11 +6,15 @@
 	app.config(function ($routeProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl: 'views/chatRoomList.html',
+				templateUrl: 'views/ChatRoomList.html',
 				controller: 'ChatRoomListController'
 			})
+			.when('/SignUpForm', {
+				templateUrl: 'views/SignUpForm.html',
+				controller: 'SignUpFormController'
+			})
 			.when('/ChatMessageList/:id', {
-				templateUrl: 'views/chatMessageList.html',
+				templateUrl: 'views/ChatMessageList.html',
 				controller: 'ChatMessageListController'
 			})
 			.otherwise({
