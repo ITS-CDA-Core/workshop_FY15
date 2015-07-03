@@ -57,11 +57,19 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-	ChatRoom.findByIdAndRemove(req.params.id, req.body, function (err, result) {
+	var query = {chatRoomId: req.params.id};
+
+	ChatMessage.remove(query, function (err, result) {
 		if (err) return next(err);
 
-		res.json(result);
+		ChatRoom.findByIdAndRemove(req.params.id, req.body, function (err, result) {
+			if (err) return next(err);
+
+			res.json(result);
+		});
+
 	});
+
 });
 
 module.exports = router;
