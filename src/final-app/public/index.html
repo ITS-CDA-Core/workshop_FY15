@@ -15,9 +15,14 @@
 	<script type="text/javascript" src="/javascripts/controllers/chatRoomListController.js"></script>
 	<script type="text/javascript" src="/javascripts/controllers/chatMessageListController.js"></script>
 	<script type="text/javascript" src="/javascripts/controllers/signUpFormController.js"></script>
+	<script type="text/javascript">
+	$('#hoge').click(function(){
+		alert("hoge");
+	});
+	</script>
 </head>
 <body>
-	<div class="ui fixed menu">
+	<div class="ui fixed menu" ng-controller="HeaderMenuController">
 		<div class="container">
 			<div class="item">ITS-CDA Chat</div>
 			<div class="menu right">
@@ -25,7 +30,7 @@
 				<div class="ui buttons">
 					<div class="ui button"><a ng-href="#/SignUpForm">Sign up</a></div>
 					<div class="or"></div>
-					<div class="ui button"><a ng-href="#/LoginForm">Login</a></div>
+					<div class="ui button" ng-click="loginButtonOnClick()"><a>Login</a></div>
 				</div>
 			</div>
 		</div>
@@ -45,6 +50,24 @@
 	<br/>
 	<div class="container">
 		ライセンス表記：<a href="http://jp.freepik.com/free-photos-vectors/人">人 Freepikによるベクターデザイン</a>
+	</div>
+	<div class="ui modal">
+		<i class="close icon"></i>
+		<div class="header">
+			Modal Title
+		</div>
+		<div class="content">
+			<div class="image">
+				An image can appear on left or an icon
+			</div>
+			<div class="description">
+				A description can appear on the right
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui button">Cancel</div>
+			<div class="ui button">OK</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -1,9 +1,9 @@
 'use strict';
 
 (function () {
-	var app = angular.module('app', ['ngRoute', 'ngMessages']);
+	angular.module('app', ['ngRoute', 'ngMessages']);
 
-	app.config(function ($routeProvider) {
+	angular.module('app').config(function ($routeProvider) {
 		$routeProvider
 			.when('/', {
 				templateUrl: 'views/ChatRoomList.html',
@@ -20,6 +20,11 @@
 			.otherwise({
 				redirectTo: '/'
 			});
+	});
+
+	angular.module('app').controller('HeaderMenuController', function($scope) {
+		$scope.loginButtonOnClick = function() {
+		};
 	});
 
 })();

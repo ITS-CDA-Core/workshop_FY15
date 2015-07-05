@@ -1,5 +1,5 @@
 <div class="container" ng-controller="SignUpFormController">
-	<h1>Sign Up</h1>
+	<h1 class="ui header">Sign Up</h1>
 	<form name="userForm" novalidate ng-submit="submit()">
 		<div>
 			<div>
@@ -7,18 +7,18 @@
 				<span ng-messages="userForm.userName.$error" ng-if="userForm.userName.$dirty || userForm.$submitted">
 					<span ng-message="required">必須です</span>
 					<span ng-message="pattern">不正な値です</span>
-					<span ng-message="minlength">4文字以上必要です</span>
+					<span ng-message="minlength">2文字以上必要です</span>
 				</span>
 			</div>
 			<div class="ui fluid corner labeled input" ng-class="{'error' : userForm.userName.$dirty && userForm.userName.$invalid}">
 				<input type="text" name="userName" ng-model="user.userName"
-				       required minlength="4" ng-pattern="/^[a-zA-Z0-9]+$/" />
+				       required minlength="2" ng-pattern="/^[a-zA-Z0-9]+$/" />
 				<div class="ui corner label">
 					<i class="asterisk icon"></i>
 				</div>
 			</div>
 		</div>
-		<br/>
+		<div class="ui hidden divider"></div>
 		<div>
 			<div>
 				<div class="ui pointing below label">パスワード</div>
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 		</div>
-		<br/>
+		<div class="ui hidden divider"></div>
 		<div ng-class="{'has-error' : userForm.avatarId.$dirty && userForm.password.$invalid}">
 			<div>
 				<div class="ui pointing below label">アバター</div>
@@ -52,7 +52,7 @@
 				</span>
 			</div>
 		</div>
-		<br/>
+		<div class="ui hidden divider"></div>
 		<button class="ui fluid primary button"
 		        ng-class="{'disabled' : userForm.$dirty && userForm.$invalid}"
 		        ng-disabled="userForm.$dirty && userForm.$invalid">登録</button>
