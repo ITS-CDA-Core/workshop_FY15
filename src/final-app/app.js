@@ -11,6 +11,7 @@ mongoose.connect('mongodb://localhost/its_chat');
 var users        = require('./routes/api/users');
 var chatRooms    = require('./routes/api/chat_rooms');
 var chatMessages = require('./routes/api/chat_messages');
+var login        = require('./routes/api/login');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/users', users);
 app.use('/api/chat_rooms', chatRooms);
 app.use('/api/chat_messages', chatMessages);
+app.use('/api/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

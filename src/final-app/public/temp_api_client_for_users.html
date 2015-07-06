@@ -83,11 +83,11 @@
 						<span ng-messages="userForm.userName.$error" ng-if="userForm.userName.$dirty || userForm.$submitted">
 							<span ng-message="required">必須です</span>
 							<span ng-message="pattern">不正な値です</span>
-							<span ng-message="minlength">4文字以上必要です</span>
+							<span ng-message="minlength">2文字以上必要です</span>
 						</span>
 					</div>
 					<input type="text" name="userName" ng-model="user.userName"
-					       required minlength="4" ng-pattern="/^[a-zA-Z0-9]+$/" />
+					       required minlength="2" ng-pattern="/^[a-zA-Z0-9]+$/" />
 				</div>
 				<div ng-class="{'has-error' : userForm.password.$dirty && userForm.password.$invalid}">
 					<div>

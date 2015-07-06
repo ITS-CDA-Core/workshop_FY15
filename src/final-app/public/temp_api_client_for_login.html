@@ -1,0 +1,76 @@
+<!doctype html>
+<html ng-app="app">
+	<head>
+		<title>User API Temp Client</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-messages.min.js"></script>
+		<script type="text/javascript">
+		(function () {
+			var app = angular.module('app', ['ngMessages']);
+
+			app.controller('LoginFormController', function($scope, $http) {
+				// model
+				$scope.loginInfo = {};
+				$scope.result = {};
+
+				$scope.submit = function () {
+					if ($scope.loginForm.$invalid) {
+						$scope.loginForm.$setDirty();
+						return;
+					}
+
+					$http.post('/api/login', $scope.loginInfo)
+						.success(function(data, status, headers, config){
+							alert("succsess");
+							$scope.result = data;
+						})
+						.error(function(data, status, headers, config){
+							alert("error");
+							$scope.result = data;
+						});
+				};
+			});
+
+		})();
+		</script>
+	</head>
+
+	<body>
+		<div ng-controller="LoginFormController">
+			<form name="loginForm" novalidate ng-submit="submit()">
+				<div ng-class="{'has-error' : loginForm.userName.$dirty && loginForm.userName.$invalid}">
+					<div>
+						<label>ユーザ名：</label>
+						<span ng-messages="loginForm.userName.$error" ng-if="loginForm.userName.$dirty || loginForm.$submitted">
+							<span ng-message="required">必須です</span>
+							<span ng-message="pattern">不正な値です</span>
+							<span ng-message="minlength">2文字以上必要です</span>
+						</span>
+					</div>
+					<input type="text" name="userName" ng-model="loginInfo.userName"
+					       required minlength="2" ng-pattern="/^[a-zA-Z0-9]+$/" />
+				</div>
+				<div ng-class="{'has-error' : loginForm.password.$dirty && loginForm.password.$invalid}">
+					<div>
+						<label>パスワード：</label>
+						<span ng-messages="loginForm.password.$error" ng-if="loginForm.password.$dirty || loginForm.$submitted">
+							<span ng-message="required">必須です</span>
+							<span ng-message="pattern">不正な値です</span>
+							<span ng-message="minlength">4文字以上必要です</span>
+							<span ng-message="joe">ユーザ名とは別にしてください</span>
+						</span>
+					</div>
+					<input type="password" name="password" ng-model="loginInfo.password"
+					       required minlength="4" ng-pattern="/^[a-zA-Z0-9]+$/" app-validators="validators.password" />
+				</div>
+				<button ng-disabled="loginForm.$dirty && loginForm.$invalid">送信</button>
+			</form>
+			<div>
+				<pre>loginInfo = {{loginInfo|json}}</pre>
+				<pre>result = {{result|json}}</pre>
+				<pre>loginForm.$error = {{loginForm.$error|json}}</pre>
+			</div>
+		</div>
+
+	</body>
+</html>

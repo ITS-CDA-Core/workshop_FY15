@@ -21,17 +21,49 @@
 	});
 	</script>
 </head>
-<body>
+<body ng-controller="RootController">
 	<div class="ui fixed menu" ng-controller="HeaderMenuController">
 		<div class="container">
 			<div class="item">ITS-CDA Chat</div>
-			<div class="menu right">
+			<div class="menu right" ng-show="$parent.isLoggedIn">
+				<div class="item">
+					<div class="ui list">
+						<div class="item">
+						<img class="ui mini rounded image" src="/images/Avatar/Small/{{$parent.loginUserInfo.avatarId}}.jpg" />
+						<div class="content">{{$parent.loginUserInfo.userName}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="ui button" ng-click="logoutButtonOnClick()"><a>LogOut</a></div>
+			</div>
+			<div class="menu right" ng-hide="$parent.isLoggedIn">
 				<div class="item">未ログイン</div>
 				<div class="ui buttons">
 					<div class="ui button"><a ng-href="#/SignUpForm">Sign up</a></div>
 					<div class="or"></div>
 					<div class="ui button" ng-click="loginButtonOnClick()"><a>Login</a></div>
 				</div>
+			</div>
+		</div>
+		<div class="container" ng-show="showLoginForm">
+			<div class="menu right">
+			<form name="loginForm" novalidate ng-submit="submit()">
+				<div class="item">
+				<div class="ui labeled input">
+					<div class="ui label">ユーザ名</div>
+					<input type="text" name="userName" ng-model="loginInfo.userName" />
+				</div>
+				</div>
+				<div class="item">
+				<div class="ui labeled input">
+					<div class="ui label">パスワード</div>
+					<input type="text" name="password" ng-model="loginInfo.password" />
+				</div>
+				</div>
+				<button class="ui primary button"
+				        ng-class="{'disabled' : loginForm.$dirty && loginForm.$invalid}"
+				        ng-disabled="loginForm.$dirty && loginForm.$invalid">認証</button>
+			</form>
 			</div>
 		</div>
 	</div>
