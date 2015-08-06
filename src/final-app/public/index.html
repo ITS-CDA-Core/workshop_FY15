@@ -8,6 +8,7 @@
 	<link type="text/css" rel="stylesheet" href="/stylesheets/signUpForm.css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.2/semantic.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-messages.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
@@ -15,11 +16,6 @@
 	<script type="text/javascript" src="/javascripts/controllers/chatRoomListController.js"></script>
 	<script type="text/javascript" src="/javascripts/controllers/chatMessageListController.js"></script>
 	<script type="text/javascript" src="/javascripts/controllers/signUpFormController.js"></script>
-	<script type="text/javascript">
-	$('#hoge').click(function(){
-		alert("hoge");
-	});
-	</script>
 </head>
 <body ng-controller="RootController">
 	<div class="ui fixed menu" ng-controller="HeaderMenuController">
@@ -82,24 +78,6 @@
 	<br/>
 	<div class="container">
 		ライセンス表記：<a href="http://jp.freepik.com/free-photos-vectors/人">人 Freepikによるベクターデザイン</a>
-	</div>
-	<div class="ui modal">
-		<i class="close icon"></i>
-		<div class="header">
-			Modal Title
-		</div>
-		<div class="content">
-			<div class="image">
-				An image can appear on left or an icon
-			</div>
-			<div class="description">
-				A description can appear on the right
-			</div>
-		</div>
-		<div class="actions">
-			<div class="ui button">Cancel</div>
-			<div class="ui button">OK</div>
-		</div>
 	</div>
 </body>
 </html>

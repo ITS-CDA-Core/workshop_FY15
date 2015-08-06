@@ -1,4 +1,8 @@
 <div class="container" ng-controller="SignUpFormController">
+	<button class="ui labeled icon button" ng-click="back()">
+		<i class="left chevron icon"></i>
+		Back
+	</button>
 	<h1 class="ui header">Sign Up</h1>
 	<form name="userForm" novalidate ng-submit="submit()">
 		<div>
@@ -45,11 +49,88 @@
 					<span ng-message="required">必須です</span>
 				</span>
 			</div>
-			<div class="AvatarSelector">
-				<span ng-repeat="avatar in avaters">
-					<input type="radio" name="avatarId" ng-model="user.avaterId" ng-value="avater" />
-					<label class="AvatarImage" for="{{avatar}}"><img src="/images/Avatar/Large/{{avatar}}.jpg" /></label>
-				</span>
+			<div class="AvatarSelector"><!-- 余計な要素が入ると画像選択がうまくいかないのでAngularの機能は使わない -->
+<input type="radio" name="avatarId" id="01" value="01" ng-model="user.avatarId" required /><label class="AvatarImage" for="01"><img src="/images/Avatar/Large/01.jpg" /></label>
+<input type="radio" name="avatarId" id="02" value="02" ng-model="user.avatarId" required /><label class="AvatarImage" for="02"><img src="/images/Avatar/Large/02.jpg" /></label>
+<input type="radio" name="avatarId" id="03" value="03" ng-model="user.avatarId" required /><label class="AvatarImage" for="03"><img src="/images/Avatar/Large/03.jpg" /></label>
+<input type="radio" name="avatarId" id="04" value="04" ng-model="user.avatarId" required /><label class="AvatarImage" for="04"><img src="/images/Avatar/Large/04.jpg" /></label>
+<input type="radio" name="avatarId" id="05" value="05" ng-model="user.avatarId" required /><label class="AvatarImage" for="05"><img src="/images/Avatar/Large/05.jpg" /></label>
+<input type="radio" name="avatarId" id="06" value="06" ng-model="user.avatarId" required /><label class="AvatarImage" for="06"><img src="/images/Avatar/Large/06.jpg" /></label>
+<input type="radio" name="avatarId" id="07" value="07" ng-model="user.avatarId" required /><label class="AvatarImage" for="07"><img src="/images/Avatar/Large/07.jpg" /></label>
+<input type="radio" name="avatarId" id="08" value="08" ng-model="user.avatarId" required /><label class="AvatarImage" for="08"><img src="/images/Avatar/Large/08.jpg" /></label>
+<input type="radio" name="avatarId" id="09" value="09" ng-model="user.avatarId" required /><label class="AvatarImage" for="09"><img src="/images/Avatar/Large/09.jpg" /></label>
+<input type="radio" name="avatarId" id="10" value="10" ng-model="user.avatarId" required /><label class="AvatarImage" for="10"><img src="/images/Avatar/Large/10.jpg" /></label>
+<input type="radio" name="avatarId" id="11" value="11" ng-model="user.avatarId" required /><label class="AvatarImage" for="11"><img src="/images/Avatar/Large/11.jpg" /></label>
+<input type="radio" name="avatarId" id="12" value="12" ng-model="user.avatarId" required /><label class="AvatarImage" for="12"><img src="/images/Avatar/Large/12.jpg" /></label>
+<input type="radio" name="avatarId" id="13" value="13" ng-model="user.avatarId" required /><label class="AvatarImage" for="13"><img src="/images/Avatar/Large/13.jpg" /></label>
+<input type="radio" name="avatarId" id="14" value="14" ng-model="user.avatarId" required /><label class="AvatarImage" for="14"><img src="/images/Avatar/Large/14.jpg" /></label>
+<input type="radio" name="avatarId" id="15" value="15" ng-model="user.avatarId" required /><label class="AvatarImage" for="15"><img src="/images/Avatar/Large/15.jpg" /></label>
+<input type="radio" name="avatarId" id="16" value="16" ng-model="user.avatarId" required /><label class="AvatarImage" for="16"><img src="/images/Avatar/Large/16.jpg" /></label>
+<input type="radio" name="avatarId" id="17" value="17" ng-model="user.avatarId" required /><label class="AvatarImage" for="17"><img src="/images/Avatar/Large/17.jpg" /></label>
+<input type="radio" name="avatarId" id="18" value="18" ng-model="user.avatarId" required /><label class="AvatarImage" for="18"><img src="/images/Avatar/Large/18.jpg" /></label>
+<input type="radio" name="avatarId" id="19" value="19" ng-model="user.avatarId" required /><label class="AvatarImage" for="19"><img src="/images/Avatar/Large/19.jpg" /></label>
+<input type="radio" name="avatarId" id="20" value="20" ng-model="user.avatarId" required /><label class="AvatarImage" for="20"><img src="/images/Avatar/Large/20.jpg" /></label>
+<input type="radio" name="avatarId" id="21" value="21" ng-model="user.avatarId" required /><label class="AvatarImage" for="21"><img src="/images/Avatar/Large/21.jpg" /></label>
+<input type="radio" name="avatarId" id="22" value="22" ng-model="user.avatarId" required /><label class="AvatarImage" for="22"><img src="/images/Avatar/Large/22.jpg" /></label>
+<input type="radio" name="avatarId" id="23" value="23" ng-model="user.avatarId" required /><label class="AvatarImage" for="23"><img src="/images/Avatar/Large/23.jpg" /></label>
+<input type="radio" name="avatarId" id="24" value="24" ng-model="user.avatarId" required /><label class="AvatarImage" for="24"><img src="/images/Avatar/Large/24.jpg" /></label>
+<input type="radio" name="avatarId" id="25" value="25" ng-model="user.avatarId" required /><label class="AvatarImage" for="25"><img src="/images/Avatar/Large/25.jpg" /></label>
+<input type="radio" name="avatarId" id="26" value="26" ng-model="user.avatarId" required /><label class="AvatarImage" for="26"><img src="/images/Avatar/Large/26.jpg" /></label>
+<input type="radio" name="avatarId" id="27" value="27" ng-model="user.avatarId" required /><label class="AvatarImage" for="27"><img src="/images/Avatar/Large/27.jpg" /></label>
+<input type="radio" name="avatarId" id="28" value="28" ng-model="user.avatarId" required /><label class="AvatarImage" for="28"><img src="/images/Avatar/Large/28.jpg" /></label>
+<input type="radio" name="avatarId" id="29" value="29" ng-model="user.avatarId" required /><label class="AvatarImage" for="29"><img src="/images/Avatar/Large/29.jpg" /></label>
+<input type="radio" name="avatarId" id="30" value="30" ng-model="user.avatarId" required /><label class="AvatarImage" for="30"><img src="/images/Avatar/Large/30.jpg" /></label>
+<input type="radio" name="avatarId" id="31" value="31" ng-model="user.avatarId" required /><label class="AvatarImage" for="31"><img src="/images/Avatar/Large/31.jpg" /></label>
+<input type="radio" name="avatarId" id="32" value="32" ng-model="user.avatarId" required /><label class="AvatarImage" for="32"><img src="/images/Avatar/Large/32.jpg" /></label>
+<input type="radio" name="avatarId" id="33" value="33" ng-model="user.avatarId" required /><label class="AvatarImage" for="33"><img src="/images/Avatar/Large/33.jpg" /></label>
+<input type="radio" name="avatarId" id="34" value="34" ng-model="user.avatarId" required /><label class="AvatarImage" for="34"><img src="/images/Avatar/Large/34.jpg" /></label>
+<input type="radio" name="avatarId" id="35" value="35" ng-model="user.avatarId" required /><label class="AvatarImage" for="35"><img src="/images/Avatar/Large/35.jpg" /></label>
+<input type="radio" name="avatarId" id="36" value="36" ng-model="user.avatarId" required /><label class="AvatarImage" for="36"><img src="/images/Avatar/Large/36.jpg" /></label>
+<input type="radio" name="avatarId" id="37" value="37" ng-model="user.avatarId" required /><label class="AvatarImage" for="37"><img src="/images/Avatar/Large/37.jpg" /></label>
+<input type="radio" name="avatarId" id="38" value="38" ng-model="user.avatarId" required /><label class="AvatarImage" for="38"><img src="/images/Avatar/Large/38.jpg" /></label>
+<input type="radio" name="avatarId" id="39" value="39" ng-model="user.avatarId" required /><label class="AvatarImage" for="39"><img src="/images/Avatar/Large/39.jpg" /></label>
+<input type="radio" name="avatarId" id="40" value="40" ng-model="user.avatarId" required /><label class="AvatarImage" for="40"><img src="/images/Avatar/Large/40.jpg" /></label>
+<input type="radio" name="avatarId" id="41" value="41" ng-model="user.avatarId" required /><label class="AvatarImage" for="41"><img src="/images/Avatar/Large/41.jpg" /></label>
+<input type="radio" name="avatarId" id="42" value="42" ng-model="user.avatarId" required /><label class="AvatarImage" for="42"><img src="/images/Avatar/Large/42.jpg" /></label>
+<input type="radio" name="avatarId" id="43" value="43" ng-model="user.avatarId" required /><label class="AvatarImage" for="43"><img src="/images/Avatar/Large/43.jpg" /></label>
+<input type="radio" name="avatarId" id="44" value="44" ng-model="user.avatarId" required /><label class="AvatarImage" for="44"><img src="/images/Avatar/Large/44.jpg" /></label>
+<input type="radio" name="avatarId" id="45" value="45" ng-model="user.avatarId" required /><label class="AvatarImage" for="45"><img src="/images/Avatar/Large/45.jpg" /></label>
+<input type="radio" name="avatarId" id="46" value="46" ng-model="user.avatarId" required /><label class="AvatarImage" for="46"><img src="/images/Avatar/Large/46.jpg" /></label>
+<input type="radio" name="avatarId" id="47" value="47" ng-model="user.avatarId" required /><label class="AvatarImage" for="47"><img src="/images/Avatar/Large/47.jpg" /></label>
+<input type="radio" name="avatarId" id="48" value="48" ng-model="user.avatarId" required /><label class="AvatarImage" for="48"><img src="/images/Avatar/Large/48.jpg" /></label>
+<input type="radio" name="avatarId" id="49" value="49" ng-model="user.avatarId" required /><label class="AvatarImage" for="49"><img src="/images/Avatar/Large/49.jpg" /></label>
+<input type="radio" name="avatarId" id="50" value="50" ng-model="user.avatarId" required /><label class="AvatarImage" for="50"><img src="/images/Avatar/Large/50.jpg" /></label>
+<input type="radio" name="avatarId" id="51" value="51" ng-model="user.avatarId" required /><label class="AvatarImage" for="51"><img src="/images/Avatar/Large/51.jpg" /></label>
+<input type="radio" name="avatarId" id="52" value="52" ng-model="user.avatarId" required /><label class="AvatarImage" for="52"><img src="/images/Avatar/Large/52.jpg" /></label>
+<input type="radio" name="avatarId" id="53" value="53" ng-model="user.avatarId" required /><label class="AvatarImage" for="53"><img src="/images/Avatar/Large/53.jpg" /></label>
+<input type="radio" name="avatarId" id="54" value="54" ng-model="user.avatarId" required /><label class="AvatarImage" for="54"><img src="/images/Avatar/Large/54.jpg" /></label>
+<input type="radio" name="avatarId" id="55" value="55" ng-model="user.avatarId" required /><label class="AvatarImage" for="55"><img src="/images/Avatar/Large/55.jpg" /></label>
+<input type="radio" name="avatarId" id="56" value="56" ng-model="user.avatarId" required /><label class="AvatarImage" for="56"><img src="/images/Avatar/Large/56.jpg" /></label>
+<input type="radio" name="avatarId" id="57" value="57" ng-model="user.avatarId" required /><label class="AvatarImage" for="57"><img src="/images/Avatar/Large/57.jpg" /></label>
+<input type="radio" name="avatarId" id="58" value="58" ng-model="user.avatarId" required /><label class="AvatarImage" for="58"><img src="/images/Avatar/Large/58.jpg" /></label>
+<input type="radio" name="avatarId" id="59" value="59" ng-model="user.avatarId" required /><label class="AvatarImage" for="59"><img src="/images/Avatar/Large/59.jpg" /></label>
+<input type="radio" name="avatarId" id="60" value="60" ng-model="user.avatarId" required /><label class="AvatarImage" for="60"><img src="/images/Avatar/Large/60.jpg" /></label>
+<input type="radio" name="avatarId" id="61" value="61" ng-model="user.avatarId" required /><label class="AvatarImage" for="61"><img src="/images/Avatar/Large/61.jpg" /></label>
+<input type="radio" name="avatarId" id="62" value="62" ng-model="user.avatarId" required /><label class="AvatarImage" for="62"><img src="/images/Avatar/Large/62.jpg" /></label>
+<input type="radio" name="avatarId" id="63" value="63" ng-model="user.avatarId" required /><label class="AvatarImage" for="63"><img src="/images/Avatar/Large/63.jpg" /></label>
+<input type="radio" name="avatarId" id="64" value="64" ng-model="user.avatarId" required /><label class="AvatarImage" for="64"><img src="/images/Avatar/Large/64.jpg" /></label>
+<input type="radio" name="avatarId" id="65" value="65" ng-model="user.avatarId" required /><label class="AvatarImage" for="65"><img src="/images/Avatar/Large/65.jpg" /></label>
+<input type="radio" name="avatarId" id="66" value="66" ng-model="user.avatarId" required /><label class="AvatarImage" for="66"><img src="/images/Avatar/Large/66.jpg" /></label>
+<input type="radio" name="avatarId" id="67" value="67" ng-model="user.avatarId" required /><label class="AvatarImage" for="67"><img src="/images/Avatar/Large/67.jpg" /></label>
+<input type="radio" name="avatarId" id="68" value="68" ng-model="user.avatarId" required /><label class="AvatarImage" for="68"><img src="/images/Avatar/Large/68.jpg" /></label>
+<input type="radio" name="avatarId" id="69" value="69" ng-model="user.avatarId" required /><label class="AvatarImage" for="69"><img src="/images/Avatar/Large/69.jpg" /></label>
+<input type="radio" name="avatarId" id="70" value="70" ng-model="user.avatarId" required /><label class="AvatarImage" for="70"><img src="/images/Avatar/Large/70.jpg" /></label>
+<input type="radio" name="avatarId" id="71" value="71" ng-model="user.avatarId" required /><label class="AvatarImage" for="71"><img src="/images/Avatar/Large/71.jpg" /></label>
+<input type="radio" name="avatarId" id="72" value="72" ng-model="user.avatarId" required /><label class="AvatarImage" for="72"><img src="/images/Avatar/Large/72.jpg" /></label>
+<input type="radio" name="avatarId" id="73" value="73" ng-model="user.avatarId" required /><label class="AvatarImage" for="73"><img src="/images/Avatar/Large/73.jpg" /></label>
+<input type="radio" name="avatarId" id="74" value="74" ng-model="user.avatarId" required /><label class="AvatarImage" for="74"><img src="/images/Avatar/Large/74.jpg" /></label>
+<input type="radio" name="avatarId" id="75" value="75" ng-model="user.avatarId" required /><label class="AvatarImage" for="75"><img src="/images/Avatar/Large/75.jpg" /></label>
+<input type="radio" name="avatarId" id="76" value="76" ng-model="user.avatarId" required /><label class="AvatarImage" for="76"><img src="/images/Avatar/Large/76.jpg" /></label>
+<input type="radio" name="avatarId" id="77" value="77" ng-model="user.avatarId" required /><label class="AvatarImage" for="77"><img src="/images/Avatar/Large/77.jpg" /></label>
+<input type="radio" name="avatarId" id="78" value="78" ng-model="user.avatarId" required /><label class="AvatarImage" for="78"><img src="/images/Avatar/Large/78.jpg" /></label>
+<input type="radio" name="avatarId" id="79" value="79" ng-model="user.avatarId" required /><label class="AvatarImage" for="79"><img src="/images/Avatar/Large/79.jpg" /></label>
+<input type="radio" name="avatarId" id="80" value="80" ng-model="user.avatarId" required /><label class="AvatarImage" for="80"><img src="/images/Avatar/Large/80.jpg" /></label>
+<input type="radio" name="avatarId" id="81" value="81" ng-model="user.avatarId" required /><label class="AvatarImage" for="81"><img src="/images/Avatar/Large/81.jpg" /></label>
 			</div>
 		</div>
 		<div class="ui hidden divider"></div>
@@ -57,4 +138,5 @@
 		        ng-class="{'disabled' : userForm.$dirty && userForm.$invalid}"
 		        ng-disabled="userForm.$dirty && userForm.$invalid">登録</button>
 	</form>
+	<pre>result = {{result|json}}</pre>
 </div>

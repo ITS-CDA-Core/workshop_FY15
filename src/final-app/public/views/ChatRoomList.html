@@ -6,10 +6,32 @@
 				<img src="/images/Avatar/Small/{{chatRoom.createdByUserAvatarId}}.jpg"/>
 			</a>
 			<div class="content">
-				<div class="text"><a ng-href="#/ChatMessageList/{{chatRoom._id}}">{{chatRoom.title}}</div>
+				<div class="text"><a ng-href="#/ChatMessageList/{{chatRoom._id}}">{{chatRoom.title}}</a></div>
 				<div class="author">{{chatRoom.createdByUserName}}</div>
 				<div class="metadata">{{chatRoom.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</div>
 			</div>
 		</div>
 	</div>
+	<form name="chatRoomForm" novalidate ng-submit="submit()" ng-show="$parent.isLoggedIn">
+		<div>
+			<div>
+				<div class="ui pointing below label">チャットルーム名</div>
+				<span ng-messages="chatRoomForm.title.$error" ng-if="chatRoomForm.title.$dirty || chatRoomForm.$submitted">
+					<span ng-message="required">必須です</span>
+					<span ng-message="maxlength">50文字以内でお願いします</span>
+				</span>
+			</div>
+			<div class="ui fluid corner labeled input" ng-class="{'error' : chatRoomForm.title.$dirty && chatRoomForm.title.$invalid}">
+				<input type="text" name="title" ng-model="chatRoomForPost.title"
+				       required maxlength="50" >
+				<div class="ui corner label">
+					<i class="asterisk icon"></i>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<button class="ui fluid primary button"
+		        ng-class="{'disabled' : chatRoomForm.$dirty && chatRoomForm.$invalid}"
+		        ng-disabled="chatRoomForm.$dirty && chatRoomForm.$invalid">登録</button>
+	</form>
 </div>

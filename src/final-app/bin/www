@@ -30,6 +30,26 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 /**
+ * Socket.IO
+ */
+var io = require('socket.io').listen(server);
+io.sockets.on('connection', function (socket) {
+	console.log('someone connected');
+
+	socket.on('chatRoom:add', function (chatRoom) {
+		io.emit('chatRoom:add', chatRoom);
+	});
+
+	socket.on('chatMessage:add', function (chatMessage) {
+		io.emit('chatMessage:add', chatMessage);
+	});
+
+	socket.on('disconnect', function () {
+		console.log('someone disconnected');
+	});
+});
+
+/**
  * Normalize a port into a number, string, or false.
  */
 

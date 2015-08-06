@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('app').controller('SignUpFormController', function($scope, $http) {
+angular.module('app').controller('SignUpFormController', function($scope, $http, $location) {
 	// model
 	$scope.user = {};
+	$scope.result = {};
 
 	$scope.avaters = (function () {
 		var tempArray = [];
@@ -33,6 +34,10 @@ angular.module('app').controller('SignUpFormController', function($scope, $http)
 		$scope.userForm.password.$validate();
 	});
 
+	$scope.back  = function() {
+		$location.path("/");
+	};
+
 	$scope.submit = function () {
 		if ($scope.userForm.$invalid) {
 			$scope.userForm.$setDirty();
@@ -40,10 +45,13 @@ angular.module('app').controller('SignUpFormController', function($scope, $http)
 		}
 
 		$http.post('/api/users', $scope.user)
-			.success(function(data, status, headers, config){
-				alert("succsess");
+			.success(function (data, status, headers, config) {
+				$scope.$parent.$parent.isLoggedIn = true;
+				$scope.$parent.$parent.loginUserInfo = data;
+				$scope.user = {};
+				$location.path("/");
 			})
-			.error(function(data, status, headers, config){
+			.error(function (data, status, headers, config) {
 				alert("error");
 			});
 	};

@@ -6,24 +6,24 @@
 				<img src="/images/Avatar/Small/{{chatMessage.createdByUserAvatarId}}.jpg"/>
 			</a>
 			<div class="content">
-				<div class="text">{{chatMessage.message}}</div>
+				<div class="text" style="white-space: pre-line;">{{chatMessage.message}}</div>
 				<div class="author">{{chatMessage.createdByUserName}}</div>
 				<div class="metadata">{{chatMessage.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</div>
 			</div>
 		</div>
 	</div>
-	<form name="chatMessageForm" novalidate ng-submit="submit()">
+	<form name="chatMessageForm" novalidate ng-submit="submit()" ng-show="$parent.isLoggedIn">
 		<div>
 			<div>
 				<div class="ui pointing below label">メッセージ投稿</div>
-				<span ng-messages="chatMessageForm.userName.$error" ng-if="chatMessageForm.userName.$dirty || chatMessageForm.$submitted">
+				<span ng-messages="chatMessageForm.message.$error" ng-if="chatMessageForm.message.$dirty || chatMessageForm.$submitted">
 					<span ng-message="required">必須です</span>
-					<span ng-message="manlength">2,000文字以内でお願いします</span>
+					<span ng-message="maxlength">2,000文字以内でお願いします</span>
 				</span>
 			</div>
-			<div class="ui form" ng-class="{'error' : chatMessageForm.userName.$dirty && chatMessageForm.userName.$invalid}">
-				<textarea name="message" ng-model="chatMessage.message"
-				       required manlength="2000" ></textarea>
+			<div class="ui form" ng-class="{'error' : chatMessageForm.message.$dirty && chatMessageForm.message.$invalid}">
+				<textarea name="message" ng-model="chatMessageForPost.message"
+				          required maxlength="2000" ></textarea>
 				<div class="ui corner label">
 					<i class="asterisk icon"></i>
 				</div>
