@@ -9,3 +9,19 @@
 	display: block;
 	margin: 0px auto;
 }
+
+.wrapper-except-footer {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -60px;
+}
+
+.push_for_footer,
+.wrapper_for_footer {
+	height: 60px;
+}
+
+.wrapper_for_footer {
+	background-color: #ffffff;
+}

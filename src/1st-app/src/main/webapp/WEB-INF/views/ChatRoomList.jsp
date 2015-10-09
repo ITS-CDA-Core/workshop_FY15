@@ -31,15 +31,6 @@
 			</c:forEach>
 		</div>
 	</div>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
 	<c:import url="common/CommonFooter.jsp"/>
 </body>
 </html>
